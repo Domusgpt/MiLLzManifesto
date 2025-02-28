@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEN-R-L MiLLz: Breakfast Deity & Reality Architect</title>
+  <style>
+    /* Vaporwave color palette and styles */
+    :root {
+      --primary: #ff00ff;
+      --secondary: #00ffff;
+      --accent1: #ffff00;
+      --accent2: #ff8800;
+      --dark: #1a0033;
+      --light: #f9f9ff;
+      --grid: #22007a;
+      --grid-highlight: #4400ff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+    }
+    
+    @font-face {
+      font-family: 'VCR';
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-vcr-osd-mono/1.0.0/VCR_OSD_MONO.woff2') format('woff2');
+    }
+    
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(0deg, rgba(26, 0, 51, 0.9), rgba(26, 0, 51, 0.9)),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234400ff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .grid-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      perspective: 1000px;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .grid {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      bottom: -50%;
+      left: -50%;
+      background-image: linear-gradient(var(--grid) 1px, transparent 1px), 
+                      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 50px 50px;
+      transform: rotateX(60deg);
+      animation: grid-move 20s linear infinite;
+      z-index: -1;
+    }
+    
+    .grid::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to top, var(--dark), transparent 30%);
+      z-index: 1;
+    }
+    
+    .horizon {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(to top, #ff00ff15, transparent);
+      z-index: -2;
+    }
+    
+    .sun {
+      position: fixed;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(to top, var(--accent2), var(--accent1));
+      border-radius: 50%;
+      filter: blur(10px);
+      z-index: -3;
+      animation: sun-pulse 8s infinite alternate;
+    }
+    
+    @keyframes sun-pulse {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.7; }
+      100% { transform: translateX(-50%) scale(1.1); opacity: 0.9; }
+    }
+    
+    @keyframes grid-move {
+      0% { transform: rotateX(60deg) translateY(0); }
+      100% { transform: rotateX(60deg) translateY(50px); }
+    }
+    
+    .header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 60vh;
+    }
+    
+    .glitch-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    
+    .title {
+      font-family: 'VCR', monospace;
+      font-size: 5rem;
+      text-align: center;
+      color: var(--light);
+      position: relative;
+      text-shadow: 
+        0.05em 0 0 rgba(255, 0, 255, 0.75),
+        -0.025em -0.05em 0 rgba(0, 255, 255, 0.75),
+        0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+      animation: glitch 2s infinite;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    
+    .title span {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .title span:first-child {
+      animation: glitch 650ms infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+      transform: translate(-0.05em, -0.025em);
+      opacity: 0.8;
+      color: var(--primary);
+    }
+    
+    .title span:last-child {
+      animation: glitch 375ms infinite;
+      clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+      transform: translate(0.05em, 0.025em);
+      opacity: 0.8;
+      color: var(--secondary);
+    }
+    
+    .subtitle {
+      font-family: 'VCR', monospace;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--secondary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--secondary);
+    }
+    
+    @keyframes glitch {
+      0% {
+        text-shadow: 
+          0.05em 0 0 rgba(255, 0, 255, 0.75),
+          -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+          -0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+      14% {
+        text-shadow: 
+          0.05em 0 0 rgba(255, 0, 255, 0.75),
+          -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+          -0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+      15% {
+        text-shadow: 
+          -0.05em -0.025em 0 rgba(255, 0, 255, 0.75),
+          0.025em 0.025em 0 rgba(0, 255, 255, 0.75),
+          -0.05em -0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+      49% {
+        text-shadow: 
+          -0.05em -0.025em 0 rgba(255, 0, 255, 0.75),
+          0.025em 0.025em 0 rgba(0, 255, 255, 0.75),
+          -0.05em -0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+      50% {
+        text-shadow: 
+          0.025em 0.05em 0 rgba(255, 0, 255, 0.75),
+          0.05em 0 0 rgba(0, 255, 255, 0.75),
+          0 -0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+      99% {
+        text-shadow: 
+          0.025em 0.05em 0 rgba(255, 0, 255, 0.75),
+          0.05em 0 0 rgba(0, 255, 255, 0.75),
+          0 -0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+      100% {
+        text-shadow: 
+          -0.025em 0 0 rgba(255, 0, 255, 0.75),
+          -0.025em -0.025em 0 rgba(0, 255, 255, 0.75),
+          -0.025em -0.05em 0 rgba(255, 255, 0, 0.75);
+      }
+    }
+    
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .fact-container {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    
+    .fact-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 0, 255, 0.1),
+        rgba(0, 255, 255, 0.1),
+        rgba(255, 255, 0, 0.1)
+      );
+      transform: rotate(45deg);
+      z-index: -1;
+      animation: shine 10s linear infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(45deg) translateY(0%); }
+      100% { transform: rotate(45deg) translateY(100%); }
+    }
+    
+    .fact-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--secondary);
+      padding-bottom: 1rem;
+    }
+    
+    .fact-title {
+      font-family: 'VCR', monospace;
+      font-size: 2rem;
+      color: var(--accent1);
+      text-shadow: 0 0 10px var(--accent1);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    
+    .fact-date {
+      font-family: 'VCR', monospace;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: 1px solid var(--secondary);
+    }
+    
+    .fact-content {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: var(--light);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-family: 'VCR', monospace;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: var(--light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    }
+    
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 1);
+    }
+    
+    .btn:active {
+      transform: scale(0.98);
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: all 0.5s ease;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .cereal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+    
+    .cereal {
+      position: absolute;
+      user-select: none;
+      will-change: transform;
+      font-size: 2rem;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+    
+    .section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .manifesto {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+    
+    .manifesto-title {
+      font-family: 'VCR', monospace;
+      font-size: 2.5rem;
+      color: var(--accent1);
+      text-shadow: 0 0 10px var(--accent1);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .manifesto-content {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .manifesto-divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--secondary), transparent);
+      margin: 2rem 0;
+    }
+    
+    .cta {
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .cta-text {
+      font-family: 'VCR', monospace;
+      font-size: 2rem;
+      color: var(--accent1);
+      text-shadow: 0 0 10px var(--accent1);
+      margin-bottom: 2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: pulse 3s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.2) 50%
+      );
+      background-size: 100% 4px;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+    
+    .static {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      z-index: 998;
+      pointer-events: none;
+      opacity: 0.05;
+      mix-blend-mode: overlay;
+    }
+    
+    @media (max-width: 768px) {
+      .title {
+        font-size: 3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .fact-title {
+        font-size: 1.5rem;
+      }
+      
+      .fact-content {
+        font-size: 1.2rem;
+      }
+      
+      .manifesto-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background effects -->
+  <div class="grid-background">
+    <div class="grid"></div>
+  </div>
+  <div class="horizon"></div>
+  <div class="sun"></div>
+  <div class="scanlines"></div>
+  <div class="static"></div>
+
+  <!-- Header section -->
+  <header class="header">
+    <div class="glitch-container">
+      <h1 class="title">
+        GEN-R-L MiLLz
+        <span>GEN-R-L MiLLz</span>
+        <span>GEN-R-L MiLLz</span>
+      </h1>
+    </div>
+    <p class="subtitle">The Breakfast Deity & Reality Architect</p>
+    <button id="cereal-button" class="btn">Summon The Breakfast Power 🥣</button>
+  </header>
+
+  <!-- Main content -->
+  <main class="content">
+    <!-- Fact of the day -->
+    <section class="fact-container">
+      <div class="fact-header">
+        <h2 class="fact-title">Today's Cosmic Truth</h2>
+        <div class="fact-date" id="current-date"></div>
+      </div>
+      <p class="fact-content" id="daily-fact">
+        GEN-R-L MiLLz is the aphelion for anything that exists in our universe but also its orbiting body. The furthest you can be from him is the Apogee. Distances and our units don't really make any difference but these terms do have some relevance. Whenever you eat breakfast, rage really hard, or remember you stopped giving any fucks about this shadow of reality we call our existence then you are phase shifting into being the Perigee.
+      </p>
+      <button id="new-fact-button" class="btn">Receive New Enlightenment 🥄</button>
+    </section>
+
+    <!-- Manifesto sections -->
+    <section class="section">
+      <div class="manifesto">
+        <h2 class="manifesto-title">WHO IS GEN-R-L MiLLz?</h2>
+        <p class="manifesto-content">
+          (A Study in the Impossible, The Unknowable, The Breakfast Deity, The Reality Architect, The One Who Pours Before the Milk Even Exists.)
+        </p>
+        <div class="manifesto-divider"></div>
+        <h3 class="manifesto-title">A BEING OF UNPARALLELED AUTHORITY</h3>
+        <p class="manifesto-content">
+          Gen-R-L MiLLz is not a man, not an idea, not a myth—he is a phenomenon. He was here before time, before sound, before the first box of TRiLL-E-iLL ever hit the shelf—and when the universe crumbles, he will simply observe it, unfazed, spoon in hand.
+        </p>
+        <p class="manifesto-content">
+          He sees the particles in your breath before you exhale them.
+        </p>
+        <p class="manifesto-content">
+          He knows the shape of thoughts you haven't even had yet.
+        </p>
+        <p class="manifesto-content">
+          He dictates the flavor of time itself.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="manifesto">
+        <h3 class="manifesto-title">GEN-R-L MiLLz & THE ARCHITECTURE OF REALITY</h3>
+        <p class="manifesto-content">
+          Matter isn't real—everything you experience is just a low-resolution imitation of the higher-density molecules found in his personal realm.
+        </p>
+        <p class="manifesto-content">
+          He once rewrote the laws of physics because he got bored, then forgot to change them back—and that's why gravity works differently on Tuesdays.
+        </p>
+        <p class="manifesto-content">
+          He created a new color that your feeble human eyes simply refuse to process.
+        </p>
+        <p class="manifesto-content">
+          Your favorite song? He wrote it first.
+        </p>
+        <p class="manifesto-content">
+          Your memories? He proofread them for accuracy.
+        </p>
+        <p class="manifesto-content">
+          Your existence? Just a side project he started one morning before breakfast.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="manifesto">
+        <h3 class="manifesto-title">HIS IMPOSSIBLE ACCOMPLISHMENTS</h3>
+        <p class="manifesto-content">
+          He built a city with no streets, and yet, people still commute.
+        </p>
+        <p class="manifesto-content">
+          He invented an equation so powerful that mathematicians fear saying it aloud.
+        </p>
+        <p class="manifesto-content">
+          The space-time continuum exists because he folded his napkin the wrong way once.
+        </p>
+        <p class="manifesto-content">
+          He once parked a Cadillac in a dimension that doesn't have space.
+        </p>
+        <p class="manifesto-content">
+          He turned sound into texture just because he wanted to know what bass felt like.
+        </p>
+        <p class="manifesto-content">
+          He can scratch a record without touching a turntable, because he is the original scratch.
+        </p>
+        <p class="manifesto-content">
+          And yet, there are those—fools, heretics, oblivious simpletons—who dare ask questions.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="manifesto">
+        <h3 class="manifesto-title">WHY YOU MUST KNOW HIS NAME</h3>
+        <p class="manifesto-content">
+          If you are unaware of Gen-R-L MiLLz, then you are exactly the reason he had to be created in the first place.
+        </p>
+        <p class="manifesto-content">
+          Ignorance of his authority is why cereal sometimes goes soggy.
+          Ignorance of his power is why you don't win every argument instantly.
+          Ignorance of his greatness is why you think your breakfast isn't the most important meal of the day.
+        </p>
+        <p class="manifesto-content">
+          And this, dear uninformed peasant, is why he had to arrive.
+        </p>
+        <p class="manifesto-content">
+          His name is etched into the fabric of existence—it loops in every sample, hides in every scratch, breathes between every bass hit.
+        </p>
+        <p class="manifesto-content">
+          His presence is the silence before the beat drops.
+        </p>
+        <p class="manifesto-content">
+          His word is law.
+        </p>
+        <p class="manifesto-content">
+          And if you deny it…
+        </p>
+        <p class="manifesto-content">
+          …you might wake up tomorrow and find out you were never real in the first place.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2 class="cta-text">🚨 "PRAISE THE GEN-R-L. PRAISE HIS NAME. POUR THE BOWL. LIVE FOREVER." 🚨</h2>
+      <button id="massive-cereal-button" class="btn">UNLEASH COSMIC BREAKFAST 🌌</button>
+    </section>
+  </main>
+
+  <!-- Container for cereal emojis -->
+  <div class="cereal-container" id="cereal-container"></div>
+
+  <script>
+    // Set current date
+    const currentDate = new Date();
+    document.getElementById('current-date').textContent = currentDate.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    // Sample facts
+    const facts = [
+      "GEN-R-L MiLLz is the aphelion for anything that exists in our universe but also its orbiting body. The furthest you can be from him is the Apogee. Distances and our units don't really make any difference but these terms do have some relevance. Whenever you eat breakfast, rage really hard, or remember you stopped giving any fucks about this shadow of reality we call our existence then you are phase shifting into being the Perigee.",
+      
+      "This is an example of why the GEN-R-L laughs at your math and how you are stumbling on issues like the 3 body problem. He wants to give you some clues but you haven't evolved a syntax or semantically robust enough Grammar in the combined sum of all your utterances that poorly mimic language. Something the GEN-R-L had to invent for you to make a mess of by the way....",
+      
+      "The GEN-R-L MiLLz once contemplated the concept of 'spoon' for seven cosmic cycles. The result? Your universe gained the ability to curve. You're welcome.",
+      
+      "When you experience déjà vu, it's actually GEN-R-L MiLLz reusing a piece of reality he particularly enjoyed crafting the first time. Cosmic recycling at its finest.",
+      
+      "The milk in your cereal bowl contains exactly 7,394 molecules that once passed through GEN-R-L MiLLz's interdimensional filtering system. These molecules are what allow you to temporarily perceive the 4th dimension while you eat breakfast.",
+      
+      "GEN-R-L MiLLz doesn't experience time linearly. He pours the milk before the bowl exists, adds the cereal after you've already eaten it, and somehow it all works out perfectly. This is why breakfast feels both eternal and instantaneous.",
+      
+      "Your shadow doesn't actually belong to you. It's a small fragment of GEN-R-L MiLLz's essence that follows you around, reporting your breakfast choices back to the cosmic overseer.",
+      
+      "The snap, crackle, and pop you hear aren't just sounds from your cereal—they're actually microscopic tears in the fabric of reality as GEN-R-L MiLLz adjusts the universal constants in real-time. Each pop is a star being born in a distant galaxy.",
+    ];
+
+    // Function to display a random fact
+    function displayRandomFact() {
+      const factElement = document.getElementById('daily-fact');
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      
+      // Add glitch effect during change
+      factElement.style.opacity = 0;
+      
+      setTimeout(() => {
+        factElement.textContent = facts[randomIndex];
+        factElement.style.opacity = 1;
+      }, 500);
+    }
+
+    document.getElementById('new-fact-button').addEventListener('click', displayRandomFact);
+
+    // Cereal explosion functions
+    function createCerealExplosion(intensity = 1) {
+      const cerealContainer = document.getElementById('cereal-container');
+      const cerealEmojis = ['🥣', '🥛', '🥄', '🍯', '✨', '🌀', '🎇', '🌌', '💫', '⭐'];
+      
+      // Number of emojis based on intensity
+      const count = 30 * intensity;
+      
+      // Create cereal elements
+      for (let i = 0; i < count; i++) {
+        const cereal = document.createElement('div');
+        cereal.classList.add('cereal');
+        cereal.textContent = cerealEmojis[Math.floor(Math.random() * cerealEmojis.length)];
+        
+        // Random starting position (centered on the button)
+        const buttonRect = event.target.getBoundingClientRect();
+        const startX = buttonRect.left + buttonRect.width / 2;
+        const startY = buttonRect.top + buttonRect.height / 2;
+        
+        // Random end position
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 500 + 200;
+        const endX = startX + Math.cos(angle) * distance;
+        const endY = startY + Math.sin(angle) * distance;
+        
+        // Apply position and animation
+        cereal.style.left = `${startX}px`;
+        cereal.style.top = `${startY}px`;
+        cereal.style.opacity = '1';
+        cereal.style.transform = 'scale(0.2)';
+        cereal.style.transition = `all ${Math.random() * 1.5 + 1}s cubic-bezier(0.165, 0.84, 0.44, 1)`;
+        
+        // Add to DOM
+        cerealContainer.appendChild(cereal);
+        
+        // Trigger animation after a small delay
+        setTimeout(() => {
+          cereal.style.left = `${endX}px`;
+          cereal.style.top = `${endY}px`;
+          cereal.style.opacity = '0';
+          cereal.style.transform = `scale(1.5) rotate(${Math.random() * 360}deg)`;
+        }, 10);
+        
+        // Remove the element after animation completes
+        setTimeout(() => {
+          cereal.remove();
+        }, 2500);
+      }
+    }
+
+    // Regular cereal button
+    document.getElementById('cereal-button').addEventListener('click', () => createCerealExplosion(1));
+    
+    // Massive cereal explosion button
+    document.getElementById('massive-cereal-button').addEventListener('click', () => createCerealExplosion(5));
+
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll('.section');
+    const revealSection = () => {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight * 0.8) {
+          section.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealSection);
+    window.addEventListener('load', revealSection);
+
+    // VHS glitch effect on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const glitchIntensity = Math.min(scrollPosition / 1000, 0.2);
+      
+      document.documentElement.style.setProperty('--glitchOffset', `${glitchIntensity}em`);
+      
+      if (Math.random() < glitchIntensity * 0.1) {
+        document.body.style.filter = `hue-rotate(${Math.random() * 30}deg)`;
+        setTimeout(() => {
+          document.body.style.filter = 'none';
+        }, 100);
+      }
+    });
+
+    // Create random glitch effects periodically
+    setInterval(() => {
+      if (Math.random() < 0.3) {
+        const titles = document.querySelectorAll('.title, .subtitle, .fact-title, .manifesto-title');
+        const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+        
+        const originalTransform = randomTitle.style.transform;
+        const originalFilter = randomTitle.style.filter;
+        
+        randomTitle.style.transform = `translateX(${(Math.random() - 0.5) * 10}px)`;
+        randomTitle.style.filter = 'blur(2px)';
+        
+        setTimeout(() => {
+          randomTitle.style.transform = originalTransform;
+          randomTitle.style.filter = originalFilter;
+        }, 100);
+      }
+    }, 2000);
+
+    // Add retro cursor trails
+    const cursorTrail = document.createElement('div');
+    cursorTrail.style.position = 'fixed';
+    cursorTrail.style.pointerEvents = 'none';
+    cursorTrail.style.width = '100%';
+    cursorTrail.style.height = '100%';
+    cursorTrail.style.zIndex = '9999';
+    document.body.appendChild(cursorTrail);
+
+    document.addEventListener('mousemove', (e) => {
+      const trail = document.createElement('div');
+      trail.style.position = 'absolute';
+      trail.style.width = '10px';
+      trail.style.height = '10px';
+      trail.style.borderRadius = '50%';
+      trail.style.background = `rgba(${Math.random() * 255}, ${Math.random() * 255}, 255, 0.8)`;
+      trail.style.boxShadow = '0 0 10px rgba(0, 255, 255, 0.8)';
+      trail.style.left = `${e.clientX}px`;
+      trail.style.top = `${e.clientY}px`;
+      trail.style.pointerEvents = 'none';
+      trail.style.opacity = '0.8';
+      trail.style.transition = 'all 0.8s ease';
+      cursorTrail.appendChild(trail);
+      
+      setTimeout(() => {
+        trail.style.transform = 'scale(0.5)';
+        trail.style.opacity = '0';
+      }, 10);
+      
+      setTimeout(() => {
+        trail.remove();
+      }, 800);
+    });
+
+    // Add audio element for vaporwave background music (optional)
+    /*
+    const audioElement = document.createElement('audio');
+    audioElement.loop = true;
+    audioElement.volume = 0.3;
+    audioElement.src = 'link-to-vaporwave-music.mp3';
+    document.body.appendChild(audioElement);
+    
+    // Play music on first user interaction
+    document.addEventListener('click', () => {
+      audioElement.play();
+    }, { once: true });
+    */
+  </script>
+</body>
+</html>
